@@ -1,0 +1,245 @@
+/* Change these CSS variables for whatever color scheme you like. */
+:root {
+    --tree-bg-color: rgb(228, 241, 235);
+
+    --node-bg-color: rgb(204, 251, 165);
+    --node-bg-color-hover: rgb(31, 161, 90);
+    --node-border-color: rgb(38, 196, 109);
+    --node-font-color: #464646;
+
+    --emp-count-bg-color: rgb(38, 196, 109);
+    --emp-count-bg-color-hover: rgb(16, 94, 51);
+    --emp-count-border-color: rgb(38, 196, 109);
+    
+    --breadcrumb-bg: linear-gradient(to right, rgb(38, 196, 109) 10%, rgb(204, 251, 165));
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 0;
+    padding: 2rem 0;
+    font-family: sans-serif;
+}
+
+.row {
+    max-width: 180rem;
+    margin: 0 auto;
+}
+
+.row:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row [class^="col-"] {
+    float: left;
+}
+
+.row [class^="col-"]:not(:last-child) {
+    margin-right: 6rem;
+}
+
+.row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2);
+}
+
+.row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3);
+}
+
+.row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem);
+}
+
+.row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4);
+}
+
+.row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem);
+}
+
+.row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem);
+}
+
+.module {
+    font-size: 1.6rem;
+}
+
+.org__content {
+    width: 100%;
+    white-space: nowrap;
+    overflow: auto;
+    background: var(--content-background-color-primary);
+}
+
+.org-instructions {
+    font-size: 1.8rem;
+}
+
+#tree {
+    display: block;
+    overflow: auto;
+    position: relative;
+    margin: 0 auto;
+    background: var(--tree-bg-color);
+    text-align: center;
+    
+    width: 100%;
+    white-space: nowrap;
+    overflow: auto;
+    user-select: none;
+    cursor: move; 
+}
+
+#tree-content {
+    display: inline-block;
+    position: relative;
+}
+
+#tree-nodes {
+}
+
+#tree-edges {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.edge {
+    stroke:rgba(0, 0, 0, .6);
+    stroke-width: 1;
+    stroke-opacity: .9;
+}
+
+.node {
+    display: inline-block;
+    position: absolute;
+    background: var(--node-bg-color);
+    padding: .3em;
+    word-spacing: normal;
+    border-radius: 0;
+    border: 1px solid var(--node-border-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    text-shadow: none;
+    color: (--node-font-color);
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: sans-serif;    
+    z-index: 100;
+    cursor: pointer;
+}
+
+.node__content {
+    /* position: relative; */
+}
+
+.child-count {
+    font-size: .6em;
+    background: var(--emp-count-bg-color);
+    color: white;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    padding: 4px;
+    z-index: 10;
+    cursor: pointer;
+    min-width: 1em;
+    line-height: 1em;
+    vertical-align: middle;
+    display: inline-block;
+    border: 1px solid var(--emp-count-border-color);
+    text-align: center;
+    box-sizing: content-box;
+    transform: translate(50%, 100%);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.child-count:hover {
+    background: var(--emp-count-bg-color-hover);
+}
+
+.node__content__link,
+.node__content__title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+.node__content__link {
+    font-size: .8em;
+}
+
+.node__content__title {
+    margin-top: .2em;
+    font-size: .75em;
+}
+
+.node:hover .node__content__link {
+    text-decoration: underline;
+}
+
+.node:hover {
+    background: var(--node-bg-color-hover);
+    transform: scale(1.4);
+    z-index: 999;
+    transition: .1s all ease;
+    color: #fff;
+}
+
+
+/* BREADCRUMB STYLES */
+#org-breadcrumb-container {
+    font-size: 2rem;
+    margin: 0 auto;
+}
+
+.org-breadcrumb {
+    display: block;
+    min-height: 3rem;
+    background: var(--breadcrumb-bg);
+    color: #fff;
+}
+
+.org-breadcrumb__item {
+    display: inline-block;
+    padding: .3em .6em;
+    font-size: .85em;
+    color: #fff;
+    text-decoration: none;
+}
+
+.org-breadcrumb__item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #fff;
+}
+
+.org-breadcrumb__item-delimiter {
+    text-align: center;
+    font-size: inherit;
+    color: #fff;
+}
+
+
+@media only screen and (max-width: 800px) {
+    span.org-breadcrumb__item-delimiter::after {
+        content: '';
+        display: block;
+    }
+}

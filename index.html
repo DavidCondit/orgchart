@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nodes on how to use the Org Chart and Breadcrumb. -->
+    <div class="row org-instructions">
+        <p>Click a node's employee count to expand or collapse its "child" node(s), ie the employee's immediate subordinates. A node without an employee count has no "child" employees.</p>
+        <p>Click a node to "drill into" the node, ie that clicked node becomes the new "root" (top level) node. The "breadcrumb" updates to display his/her manager(s).</p>
+        <p>Breadcrumb names are links that, like clicking a node, drill into the clicked name's node.</p>
+    </div>
+    <!-- Controls for zooming, expanding, and collapsing the Org Chart. -->
+    <div class="row">
+        <input id="zoom-slider" type="range" min="1" max="10" value="7">
+        <button id="expand-all-btn">Expand All</button>
+        <button id="collapse-all-btn">Collapse All</button>
+    </div>
+    <!-- The Org Chart Breadcrumb and Org Chart. -->
+    <div class="row">
+        <!-- Org Chart Breadcrumb Navigation -->
+        <div class="module" id="org-breadcrumb-container">
+            <div id="org-breadcrumb"></div>
+        </div>
+        <!-- Org Chart -->
+        <div class="module" id="tree">
+            <div id="tree-content">
+                <div id="tree-nodes"></div>
+                <svg id="tree-edges"></svg>                
+            </div>
+        </div>    
+    </div>
+
+    <!-- RequireJS is used so JavaScript (compiled from TypeScript) "modules" can be imported inot the org.main.js script file. -->
+    <script src="./src/require.js"></script>
+    <!-- RequireJS is pointed at the org.main.js file (compiled from org.main.ts), meaning this script file is executed. 
+         The file exports an instance of the OrgTree class, which is assigned to the window as a global variable called "main." -->
+    <script>
+        require(['./dist/org.main'], function (main) {
+            window.main = main;
+        });
+    </script>
+</body>
+</html>

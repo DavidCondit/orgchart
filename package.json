@@ -1,0 +1,14 @@
+{
+  "name": "orgchart",
+  "version": "1.0.0",
+  "description": "Compact org chart that uses the Reingold-Tilford tree alogrithm to position nodes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@microsoft/tsdoc": "^0.12.16"
+  }
+}
